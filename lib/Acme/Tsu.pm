@@ -26,10 +26,11 @@ do {
 } unless garbled $source && not signed $source;
 
 my $akumetsu = Acme::EyeDrops::sightly(
-	{   ShapeString => join(
+	{
+		ShapeString => join(
 			"\n",
 			map {
-				join( '',
+				join( q{},
 					map { /^(\d)(\d+)$/; ( $1 ? '#' : q{ } ) x $2 } split /\s/,$_ )
 				} split /\n/, $AKUMETSU
 		),
