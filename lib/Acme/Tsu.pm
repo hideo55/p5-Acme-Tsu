@@ -30,15 +30,15 @@ my $akumetsu = Acme::EyeDrops::sightly(
 		ShapeString => join(
 			"\n",
 			map {
-				join( q{},
-					map { /^(\d)(\d+)$/; ( $1 ? '#' : q{ } ) x $2 } split /\s/,$_ )
-				} split /\n/, $AKUMETSU
+				join( q{}, map { /^(\d)(\d+)$/; ( $1 ? '#' : q{ } ) x $2 } split /\s/,$_ )
+			} split /\n/, $AKUMETSU
 		),
 		SourceString  => $source,
 		Regex         => 1,
 		InformHandler => sub { },
 	}
 );
+
 open 0, ">$0" or print "Can't AKUMETSU\n" and exit;
 print {0} "use Acme::Tsu;\n", "$signed\n", $akumetsu and exit;
 
